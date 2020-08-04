@@ -9,7 +9,7 @@ namespace task1
         {
             var start = new DateTime(2020, 5, 1);
             Console.WriteLine(start);
-            var end = new DateTime(2020, 5, 24);
+            var end = new DateTime(2020, 5, 25);
             Console.WriteLine(end);
             
             DateTime[] holidays = new DateTime[]
@@ -33,8 +33,15 @@ namespace task1
             {
                 workDates.Add(date);
             }
+            int sum = 0;
             DateTime[] dateRange = workDates.ToArray();
-            return dateRange.Length - holidays.Length; 
+            foreach(DateTime date in dateRange) {
+                if(!Array.Exists(holidays, holidayDay => holidayDay == date))
+                {
+                    sum += 1;
+                }
+            }
+            return sum; 
         }
     }
 }
